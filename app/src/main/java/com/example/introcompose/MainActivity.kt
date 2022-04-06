@@ -1,16 +1,15 @@
 package com.example.introcompose
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,16 +39,23 @@ fun MyApp() {
         .fillMaxHeight(),
     color = Color(0xFF546E7A)
     ) {
+        Box(contentAlignment = Alignment.Center) {
+            CreateCircle()
+        }
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Preview
 @Composable
 fun CreateCircle() {
     Card(modifier = Modifier
         .padding(3.dp)
         .size(100.dp),
-    shape = CircleShape) {
+    shape = CircleShape,
+    onClick = {
+        Log.d("Tap", "Created Circle Tap")
+    }) {
         
         Box(contentAlignment = Alignment.Center) {
             Text(text = "Tap!")
