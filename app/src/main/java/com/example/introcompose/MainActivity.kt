@@ -14,9 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.introcompose.ui.theme.IntroComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -34,12 +37,22 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyApp() {
-    Surface(modifier = Modifier
-        .fillMaxWidth()
-        .fillMaxHeight(),
-    color = Color(0xFF546E7A)
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        color = Color(0xFF546E7A)
     ) {
-        Box(contentAlignment = Alignment.Center) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(text = "$100", style = TextStyle(
+                color = Color.White,
+                fontSize = 19.sp,
+                fontWeight = FontWeight.Bold
+            ))
+            Spacer(modifier = Modifier.height(100.dp))
             CreateCircle()
         }
     }
@@ -52,16 +65,16 @@ fun CreateCircle() {
     Card(modifier = Modifier
         .padding(3.dp)
         .size(100.dp),
-    shape = CircleShape,
-    onClick = {
-        Log.d("Tap", "Created Circle Tap")
-    }) {
-        
+        shape = CircleShape,
+        onClick = {
+            Log.d("Tap", "Created Circle Tap")
+        }) {
+
         Box(contentAlignment = Alignment.Center) {
             Text(text = "Tap!")
         }
 
-        
+
     }
 }
 
