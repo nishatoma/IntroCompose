@@ -11,6 +11,8 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -62,16 +64,21 @@ fun MyApp() {
 @Preview
 @Composable
 fun CreateCircle() {
+    var moneyCounter = remember {
+        mutableStateOf(0)
+    }
+
     Card(modifier = Modifier
         .padding(3.dp)
         .size(100.dp),
         shape = CircleShape,
         onClick = {
-            Log.d("Tap", "Created Circle Tap")
+            moneyCounter.value++
+            Log.d("Counter", "Count: $moneyCounter")
         }) {
 
         Box(contentAlignment = Alignment.Center) {
-            Text(text = "Tap!")
+            Text(text = "Tap! ${moneyCounter.value}")
         }
 
 
